@@ -1,19 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './styles.scss';
+import { Flex, HStack, Box } from '@chakra-ui/react'
+import Circle from "./components/circle/MainCircle"
+import MainChart from './components/chart/MainChart';
+import { Provider as BusProvider } from 'react-bus';
+import TextData from './textdata';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BusProvider>
+
+    <HStack>
+    <div className='chart'>
+    <MainChart />
+    </div>
+    <TextData />
+    </HStack>
+
+    <div className='circle'>
+      <Circle />
+    </div>
+
+    </BusProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
